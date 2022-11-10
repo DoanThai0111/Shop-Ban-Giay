@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ShopBanHang.Models.chude>
+
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("GiayTheoChuDe", "Giay", new { id = item.MaCD })" class="list-group-item">
+            <br />
+            @item.TenChuDe
+        </a>
+    }
+</div>
+
+

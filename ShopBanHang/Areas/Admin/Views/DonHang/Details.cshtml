@@ -1,0 +1,131 @@
+﻿@model ShopBanHang.Models.dondathang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý thông tin đơn hàng</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="https://localhost:44358/Admin">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">HOME</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Xin chào bạn đến với Chi Tiết Đơn Hàng </h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    Hãy kiểm tra thật kỹ trước khi chỉnh sửa !
+                </p>
+                <style type="text/css">
+                    img {
+                        width: 200px;
+                        margin-bottom: 20px;
+                    }
+                </style>
+                <h2 style="text-align:center">CHI TIẾT ĐƠN HÀNG</h2>
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Số đơn hàng:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.SoDH)
+                        </dd>
+                        <dt>
+                            Mã khách hàng:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MaKH)
+                        </dd>
+                        <dt>
+                            Ngày đặt hàng:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.NgayDH)
+                        </dd>
+                        <dt>
+                            Trị giá:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TriGia)
+                        </dd>
+                        <dt>
+                            Đã giao:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DaGiao)
+                        </dd>
+                        <dt>
+                            Ngày giao hàng:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.NgayGiaoHang)
+                        </dd>
+                        <dt>
+                            Tên người nhận:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TenNguoiNhan)
+                        </dd>
+                        <dt>
+                            Địa chỉ nhận:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DiaChiNhan)
+                        </dd>
+                        <dt>
+                            Điện thoại nhận:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DienThoaiNhan)
+                        </dd>
+                        <dt>
+                            Hoàn tất thanh toán:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.HTThanhToan)
+                        </dd>
+                        <dt>
+                            Hoàn tất giao hàng:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.HTGiaoHang)
+                        </dd>
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Sửa", "Edit", new { id = Model.SoDH }) |
+                    @Html.ActionLink("VỀ TRANG QUẢN LÝ ĐƠN HÀNG", "Index")
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+

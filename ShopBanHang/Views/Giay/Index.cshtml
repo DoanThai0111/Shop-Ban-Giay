@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ShopBanHang.Models.giay>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <h2 class="text-center">CÁC SẢN PHẨM NỔI BẬT NHẤT</h2>
+
+    <div class="row text-center">
+        @foreach (var giay in Model)
+        {
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+                <div class="thumbnail">
+                    <img src="~/Sach/@giay.HinhMinhHoa" alt="@giay.TenGiay" ;
+                         class="img-responsive img-rounded imgbook" width="380" />
+                    <div class="caption">
+                        <h4 style="min-height:90px;min-width:90px">
+                            <a href="@Url.Action("Chitietgiay","Giay",new {id = giay.MaGiay })">
+                                @giay.TenGiay
+                                <br />
+                                <br />
+                                @giay.DonGia
+                            </a>
+                        </h4>
+                        <p>
+                            <a href="@Url.Action("ThemGioHang","GioHang",new { ms = giay.MaGiay, url = Request.Url.ToString() })" class="btn btn-primary" role="button">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                                </span> Thêm vào giỏ hàng
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <nav class="text-center">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li class="disabled">
+                <a href="#">5</a>
+            </li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="container">
+    <br />
+    <!-- row-->
+    <hr>
+</div><!-- /.container-->

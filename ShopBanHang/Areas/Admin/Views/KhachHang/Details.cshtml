@@ -1,0 +1,119 @@
+﻿@model ShopBanHang.Models.khachhang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý thông tin Khách Hàng</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="https://localhost:44358/Admin">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">HOME</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Xin chào bạn đến với Chi Tiết khách hàng </h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    Hãy kiểm tra thật kỹ trước khi chỉnh sửa !
+                </p>
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Mã khách hàng:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MaKH)
+                        </dd>
+                        <dt>
+                            Họ tên khách hàng:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.HoTenKH)
+                        </dd>
+                        <dt>
+                            Địa chỉ khách hàng:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DiaChiKH)
+                        </dd>
+                        <dt>
+                            Số điện thoại:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DienThoaiKH)
+                        </dd>
+                        <dt>
+                            Tên đăng nhập:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TenDN)
+                        </dd>
+                        <dt>
+                            Mật khẩu:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MatKhau)
+                        </dd>
+                        <dt>
+                            Ngày sinh:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.NgaySinh)
+                        </dd>
+                        <dt>
+                            Giới tính:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.GioiTinh)
+                        </dd>
+                        <dt>
+                            Email:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaKH }) |
+                    @Html.ActionLink("VỀ TRANG QUẢN LÝ KHÁCH HÀNG", "Index")
+                </p>
+
+            </div>
+        </div>
+    </section>
+</div>

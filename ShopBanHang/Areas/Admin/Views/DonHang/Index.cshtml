@@ -1,0 +1,150 @@
+﻿@using ShopBanHang.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<ShopBanHang.Models.dondathang>
+
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>
+    }
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý thông tin đơn hàng</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="https://localhost:44358/Admin">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">HOME</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Xin chào bạn đến với trang quản lý Shop Giày</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                @*<h2 style="text-align:center;">QUẢN LÝ THÔNG TIN ĐƠN HÀNG</h2>*@
+
+                <p>
+                    Hãy kiểm tra thật kỹ trước khi chỉnh sửa !
+                    @*@Html.ActionLink("Thêm mới", "Create")*@
+                </p>
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center;width:auto">
+                            Mã khách hàng
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Ngày đặt hàng
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Trị giá
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Đã giao
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Ngày giao hàng
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Tên người nhận
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Địa chỉ nhận
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Điện thoại nhận
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Đã thanh toán
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Đã giao hàng
+                        </th>
+                        <th style="text-align:center; width:200px;"></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.MaKH)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.FormatValue(@item.NgayDH, "{0:dd/MM/yyyy}")
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.FormatValue(item.TriGia, "{0:#,##0}")
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.DaGiao)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.FormatValue(@item.NgayGiaoHang, "{0:dd/MM/yyyy}")
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.TenNguoiNhan)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.DiaChiNhan)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.DienThoaiNhan)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.HTThanhToan)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.HTGiaoHang)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.SoDH })" class="btn btn-warning" role="button">Sửa</a>
+                                <a href="@Url.Action("Details", new { id = item.SoDH })" class="btn btn-primary" role="button">Chi tiết</a>
+                                <a href="@Url.Action("Delete", new { id = item.SoDH })" class="btn btn-danger" role="button">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+                <div class="MenuTrang">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                </div>
+                <style>
+                    .MenuTrang {
+                        display: inline;
+                        text-align: center;
+                    }
+                </style>*@
+            </div>
+        </div>
+    </section>        
+</div>

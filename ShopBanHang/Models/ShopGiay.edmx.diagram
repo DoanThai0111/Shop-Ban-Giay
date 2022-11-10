@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="90083cb52d0744609d30880682263814" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopGiayModel.admin" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.chude" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.ctdathang" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.ctthamdo" Width="1.5" PointX="8" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.dondathang" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.giay" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.khachhang" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.menu" Width="1.5" PointX="5.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.nhaxuatban" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.quangcao" Width="1.5" PointX="7.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.tacgia" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.thamdo" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.vietgiay" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ShopGiayModel.FK_giay_ChuDe" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_ctdathang_dondathang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_ctdathang_Giay" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_ctthamdo_ThamDo" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_dondathang_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_giay_NhaXuatBan" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_vietgiay_Giay" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_vietgiay_TacGia" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

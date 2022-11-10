@@ -1,0 +1,55 @@
+﻿@using ShopBanHang.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<giay>
+@{
+    ViewBag.Title = "GiayTheoChuDe";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <h2 class="text-center">Giày Theo Hãng</h2>
+        <hr>
+        <div class="row text-center">
+            @foreach (var giay in Model)
+            {
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+                    <div class="thumbnail">
+                        <img src="~/ImgGiay/@giay.HinhMinhHoa" alt="@giay.TenGiay"
+                             class="img-responsive img-rounded imgbook" width="180" />
+                        <div class="caption">
+                            <h4 style="min-height:70px;">
+                                <a href="@Url.Action("Chitietgiay","Giay",new {id = giay.MaGiay })">
+                                    @giay.TenGiay
+                                </a>
+                            </h4>
+                            <p>
+                                <a href="@Url.Action("ThemGioHang","GioHang", new { ms = giay.MaGiay, url = Request.Url.ToString() })" class="btn btn-primary" role="button">
+                                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                                    </span> Thêm vào giỏ hàng
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+    
+    <!-- Thêm phân trang vào -->
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("GiayTheoChuDe", new { id = ViewBag.MaCD, page = page }))
+    </div>
+
+    <style>
+        .MenuTrang {
+            display: inline;
+            text-align: center;
+        }
+    </style>
+
+
+

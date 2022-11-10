@@ -1,0 +1,34 @@
+﻿@using ShopBanHang.Models
+@{
+    khachhang kh = (khachhang)Session["TaiKhoan"];
+}
+@if (Session["TaiKhoan"] == null)
+
+{
+    <li>
+        <a href="~/User/DangKy">
+            <span class="glyphicon glyphicon-user"></span>
+            Đăng ký
+        </a>
+    </li>
+    <li>
+        <a href="~/User/DangNhap?id=1">
+            <span class="glyphicon glyphicon-log-in"></span>
+            Đăng Nhập
+        </a>
+    </li>
+}
+else
+{ <li>
+        <a href="#">
+            <span class="glyphicon glyphicon-user"></span>
+            Xin chào :@kh.HoTenKH
+        </a>
+    </li>
+    <li>
+        <a href="@Url.Action("DangNhap","User")">
+            <span class="glyphicon glyphicon-log-out"></span>
+            Đăng xuất
+        </a>
+    </li>
+}

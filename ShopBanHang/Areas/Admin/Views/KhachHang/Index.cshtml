@@ -1,0 +1,126 @@
+﻿@using ShopBanHang.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<ShopBanHang.Models.khachhang>
+
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>
+    }
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý thông tin Khách Hàng</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="https://localhost:44358/Admin">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">HOME</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Xin chào bạn đến với Quản lý thông tin khách hàng </h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    Hãy kiểm tra thật kỹ trước khi chỉnh sửa !                                  
+                </p>
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center;width:auto">
+                            Họ tên KH
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Địa chỉ KH
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Điện thoại KH
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Tên đăng nhập
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Mật khẩu
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Ngày sinh
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Giới tính
+                        </th>
+                        <th style="text-align:center;width:auto">
+                            Email
+                        </th>
+                        <th style="text-align:center; width:200px;"></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.HoTenKH)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.DiaChiKH)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.DienThoaiKH)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.TenDN)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.MatKhau)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.FormatValue(@item.NgaySinh, "{0:dd/MM/yyyy}")
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.GioiTinh)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.MaKH })" class="btn btn-warning" role="button">Sửa</a>
+                                <a href="@Url.Action("Details", new { id = item.MaKH })" class="btn btn-primary" role="button">Chi tiết</a>
+                                <a href="@Url.Action("Delete", new { id = item.MaKH })" class="btn btn-danger" role="button">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopGiayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="MaAdmin" />
+    </Key>
+    <Property Name="MaAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTenAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChiAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DienThoaiAdmin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TenDNAdmin" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhauAdmin" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NgaySinhAdmin" Type="DateTime" Precision="0" />
+    <Property Name="GioiTinhAdmin" Type="Boolean" />
+    <Property Name="EmailAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="QuyenAdmin" Type="Int32" />
+  </EntityType>
+  <EntityType Name="chude">
+    <Key>
+      <PropertyRef Name="MaCD" />
+    </Key>
+    <Property Name="MaCD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="giays" Relationship="Self.FK_giay_ChuDe" FromRole="chude" ToRole="giay" />
+  </EntityType>
+  <EntityType Name="ctdathang">
+    <Key>
+      <PropertyRef Name="SoDH" />
+      <PropertyRef Name="MaGiay" />
+    </Key>
+    <Property Name="SoDH" Type="Int32" Nullable="false" />
+    <Property Name="MaGiay" Type="Int32" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="ThanhTien" Type="Decimal" Precision="20" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="dondathang" Relationship="Self.FK_ctdathang_dondathang" FromRole="ctdathang" ToRole="dondathang" />
+    <NavigationProperty Name="giay" Relationship="Self.FK_ctdathang_Giay" FromRole="ctdathang" ToRole="giay" />
+  </EntityType>
+  <EntityType Name="ctthamdo">
+    <Key>
+      <PropertyRef Name="MaCH" />
+      <PropertyRef Name="STT" />
+    </Key>
+    <Property Name="MaCH" Type="Int32" Nullable="false" />
+    <Property Name="STT" Type="Int32" Nullable="false" />
+    <Property Name="NoiDungTraLoi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoLanBinhChon" Type="Int32" />
+    <NavigationProperty Name="thamdo" Relationship="Self.FK_ctthamdo_ThamDo" FromRole="ctthamdo" ToRole="thamdo" />
+  </EntityType>
+  <EntityType Name="dondathang">
+    <Key>
+      <PropertyRef Name="SoDH" />
+    </Key>
+    <Property Name="SoDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaKH" Type="Int32" />
+    <Property Name="NgayDH" Type="DateTime" Precision="0" />
+    <Property Name="TriGia" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DaGiao" Type="Boolean" />
+    <Property Name="NgayGiaoHang" Type="DateTime" Precision="0" />
+    <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DiaChiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DienThoaiNhan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="HTThanhToan" Type="Boolean" />
+    <Property Name="HTGiaoHang" Type="Boolean" />
+    <NavigationProperty Name="ctdathangs" Relationship="Self.FK_ctdathang_dondathang" FromRole="dondathang" ToRole="ctdathang" />
+    <NavigationProperty Name="khachhang" Relationship="Self.FK_dondathang_KhachHang" FromRole="dondathang" ToRole="khachhang" />
+  </EntityType>
+  <EntityType Name="giay">
+    <Key>
+      <PropertyRef Name="MaGiay" />
+    </Key>
+    <Property Name="MaGiay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenGiay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DonViTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DonGia" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhMinhHoa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MaCD" Type="Int32" />
+    <Property Name="MaNXB" Type="Int32" />
+    <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
+    <Property Name="SoLuongBan" Type="Int32" />
+    <Property Name="SoLanXem" Type="Int32" />
+    <NavigationProperty Name="chude" Relationship="Self.FK_giay_ChuDe" FromRole="giay" ToRole="chude" />
+    <NavigationProperty Name="ctdathangs" Relationship="Self.FK_ctdathang_Giay" FromRole="giay" ToRole="ctdathang" />
+    <NavigationProperty Name="nhaxuatban" Relationship="Self.FK_giay_NhaXuatBan" FromRole="giay" ToRole="nhaxuatban" />
+    <NavigationProperty Name="vietgiays" Relationship="Self.FK_vietgiay_Giay" FromRole="giay" ToRole="vietgiay" />
+  </EntityType>
+  <EntityType Name="khachhang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChiKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DienThoaiKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TenDN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="GioiTinh" Type="Boolean" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DaDuyet" Type="Boolean" />
+    <NavigationProperty Name="dondathangs" Relationship="Self.FK_dondathang_KhachHang" FromRole="khachhang" ToRole="dondathang" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="OrderNumber" Type="Int32" />
+  </EntityType>
+  <EntityType Name="nhaxuatban">
+    <Key>
+      <PropertyRef Name="MaNXB" />
+    </Key>
+    <Property Name="MaNXB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNXB" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="giays" Relationship="Self.FK_giay_NhaXuatBan" FromRole="nhaxuatban" ToRole="giay" />
+  </EntityType>
+  <EntityType Name="quangcao">
+    <Key>
+      <PropertyRef Name="STT" />
+    </Key>
+    <Property Name="STT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenCongTy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HinhMinhHoa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Href" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
+    <Property Name="NgayHetHan" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tacgia">
+    <Key>
+      <PropertyRef Name="MaTG" />
+    </Key>
+    <Property Name="MaTG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChiTG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DienThoaiTG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="vietgiays" Relationship="Self.FK_vietgiay_TacGia" FromRole="tacgia" ToRole="vietgiay" />
+  </EntityType>
+  <EntityType Name="thamdo">
+    <Key>
+      <PropertyRef Name="MaCH" />
+    </Key>
+    <Property Name="MaCH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayDang" Type="DateTime" Precision="0" />
+    <Property Name="NoiDungThamDo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TongSoBinhChon" Type="Int32" />
+    <NavigationProperty Name="ctthamdoes" Relationship="Self.FK_ctthamdo_ThamDo" FromRole="thamdo" ToRole="ctthamdo" />
+  </EntityType>
+  <EntityType Name="vietgiay">
+    <Key>
+      <PropertyRef Name="MaTG" />
+      <PropertyRef Name="MaGiay" />
+    </Key>
+    <Property Name="MaTG" Type="Int32" Nullable="false" />
+    <Property Name="MaGiay" Type="Int32" Nullable="false" />
+    <Property Name="VaiTro" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="giay" Relationship="Self.FK_vietgiay_Giay" FromRole="vietgiay" ToRole="giay" />
+    <NavigationProperty Name="tacgia" Relationship="Self.FK_vietgiay_TacGia" FromRole="vietgiay" ToRole="tacgia" />
+  </EntityType>
+  <Association Name="FK_giay_ChuDe">
+    <End Role="chude" Type="Self.chude" Multiplicity="0..1" />
+    <End Role="giay" Type="Self.giay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chude">
+        <PropertyRef Name="MaCD" />
+      </Principal>
+      <Dependent Role="giay">
+        <PropertyRef Name="MaCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctdathang_dondathang">
+    <End Role="dondathang" Type="Self.dondathang" Multiplicity="1" />
+    <End Role="ctdathang" Type="Self.ctdathang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dondathang">
+        <PropertyRef Name="SoDH" />
+      </Principal>
+      <Dependent Role="ctdathang">
+        <PropertyRef Name="SoDH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctdathang_Giay">
+    <End Role="giay" Type="Self.giay" Multiplicity="1" />
+    <End Role="ctdathang" Type="Self.ctdathang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giay">
+        <PropertyRef Name="MaGiay" />
+      </Principal>
+      <Dependent Role="ctdathang">
+        <PropertyRef Name="MaGiay" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctthamdo_ThamDo">
+    <End Role="thamdo" Type="Self.thamdo" Multiplicity="1" />
+    <End Role="ctthamdo" Type="Self.ctthamdo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="thamdo">
+        <PropertyRef Name="MaCH" />
+      </Principal>
+      <Dependent Role="ctthamdo">
+        <PropertyRef Name="MaCH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dondathang_KhachHang">
+    <End Role="khachhang" Type="Self.khachhang" Multiplicity="0..1" />
+    <End Role="dondathang" Type="Self.dondathang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khachhang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="dondathang">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_giay_NhaXuatBan">
+    <End Role="nhaxuatban" Type="Self.nhaxuatban" Multiplicity="0..1" />
+    <End Role="giay" Type="Self.giay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nhaxuatban">
+        <PropertyRef Name="MaNXB" />
+      </Principal>
+      <Dependent Role="giay">
+        <PropertyRef Name="MaNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vietgiay_Giay">
+    <End Role="giay" Type="Self.giay" Multiplicity="1" />
+    <End Role="vietgiay" Type="Self.vietgiay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giay">
+        <PropertyRef Name="MaGiay" />
+      </Principal>
+      <Dependent Role="vietgiay">
+        <PropertyRef Name="MaGiay" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vietgiay_TacGia">
+    <End Role="tacgia" Type="Self.tacgia" Multiplicity="1" />
+    <End Role="vietgiay" Type="Self.vietgiay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tacgia">
+        <PropertyRef Name="MaTG" />
+      </Principal>
+      <Dependent Role="vietgiay">
+        <PropertyRef Name="MaTG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopGiayEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="Self.admin" />
+    <EntitySet Name="chudes" EntityType="Self.chude" />
+    <EntitySet Name="ctdathangs" EntityType="Self.ctdathang" />
+    <EntitySet Name="ctthamdoes" EntityType="Self.ctthamdo" />
+    <EntitySet Name="dondathangs" EntityType="Self.dondathang" />
+    <EntitySet Name="giays" EntityType="Self.giay" />
+    <EntitySet Name="khachhangs" EntityType="Self.khachhang" />
+    <EntitySet Name="menus" EntityType="Self.menu" />
+    <EntitySet Name="nhaxuatbans" EntityType="Self.nhaxuatban" />
+    <EntitySet Name="quangcaos" EntityType="Self.quangcao" />
+    <EntitySet Name="tacgias" EntityType="Self.tacgia" />
+    <EntitySet Name="thamdoes" EntityType="Self.thamdo" />
+    <EntitySet Name="vietgiays" EntityType="Self.vietgiay" />
+    <AssociationSet Name="FK_giay_ChuDe" Association="Self.FK_giay_ChuDe">
+      <End Role="chude" EntitySet="chudes" />
+      <End Role="giay" EntitySet="giays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctdathang_dondathang" Association="Self.FK_ctdathang_dondathang">
+      <End Role="dondathang" EntitySet="dondathangs" />
+      <End Role="ctdathang" EntitySet="ctdathangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctdathang_Giay" Association="Self.FK_ctdathang_Giay">
+      <End Role="giay" EntitySet="giays" />
+      <End Role="ctdathang" EntitySet="ctdathangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctthamdo_ThamDo" Association="Self.FK_ctthamdo_ThamDo">
+      <End Role="thamdo" EntitySet="thamdoes" />
+      <End Role="ctthamdo" EntitySet="ctthamdoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dondathang_KhachHang" Association="Self.FK_dondathang_KhachHang">
+      <End Role="khachhang" EntitySet="khachhangs" />
+      <End Role="dondathang" EntitySet="dondathangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_giay_NhaXuatBan" Association="Self.FK_giay_NhaXuatBan">
+      <End Role="nhaxuatban" EntitySet="nhaxuatbans" />
+      <End Role="giay" EntitySet="giays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vietgiay_Giay" Association="Self.FK_vietgiay_Giay">
+      <End Role="giay" EntitySet="giays" />
+      <End Role="vietgiay" EntitySet="vietgiays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vietgiay_TacGia" Association="Self.FK_vietgiay_TacGia">
+      <End Role="tacgia" EntitySet="tacgias" />
+      <End Role="vietgiay" EntitySet="vietgiays" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,92 @@
+﻿@model ShopBanHang.Models.giay
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    h3, h4 {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý thông tin Giày</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="https://localhost:44358/Admin">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">HOME</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Xin chào bạn đến với Xóa Chi Tiết Giày</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    Hãy kiểm tra thật kỹ trước khi chỉnh sửa !
+                </p>
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>Tên sách:</dt>
+                        <dd>@Html.DisplayFor(model => model.TenGiay) </dd>
+                        <dt> Mô tả: </dt>
+                        <dd>
+                            @Html.Raw(@Model.MoTa.ToString().Replace("\n",
+                      "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+                        </dd>
+                        <dt> Ảnh bìa: </dt>
+                        <dd> <img src="~/Content/Images/Sach/@Model.HinhMinhHoa" alt=" @Model.TenGiay"> </dd>
+                        <dt> Ngày cập nhật:</dt>
+                        <dd> @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}") </dd>
+                        <dt> Số lượng bán: </dt>
+                        <dd> @Html.DisplayFor(model => model.SoLuongBan)</dd>
+                        <dt>Giá bán: </dt>
+                        <dd> @Html.FormatValue(@Model.DonGia, "{0:#,##0}") VNĐ</dd>
+                        <dt>Chủ đề:</dt>
+                        <dd>@Html.DisplayFor(model => model.chude.TenChuDe)</dd>
+                        <dt>Nhà xuất bản:</dt>
+                        <dd>@Html.DisplayFor(model => model.nhaxuatban.TenNXB)</dd>
+                    </dl>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-actions no-color">
+                            <input type="submit" value="XÓA" class="btn btn-default" /> |
+                            @Html.ActionLink("VỀ TRANG QUẢN LÝ", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,122 @@
+﻿@using ShopBanHang.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<ShopBanHang.Models.giay>
+
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>
+    }
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý thông tin Giày</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="https://localhost:44358/Admin">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">HOME</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Xin chào bạn đến với trang quản lý Shop Giày</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    Hãy kiểm tra thật kỹ trước khi chỉnh sửa !                 
+                </p>
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center;width:140px">
+                            Tên sách
+                        </th>
+                        <th style="text-align:center;width:200px">
+                            Mô tả
+                        </th>
+                        <th style="text-align:center;width:80px">
+                            @Html.DisplayNameFor(model => model.First().HinhMinhHoa)
+                        </th>
+                        <th style="text-align:center;width:100px">
+                            Ngày cập nhật
+                        </th>
+                        <th style="text-align:center;width:80px">
+                            Số lượng
+                        </th>
+                        <th style="text-align:center;width:80px">
+                            @Html.DisplayNameFor(model => model.First().DonGia)
+                        </th>
+                        <th style="text-align:center;width:100px">
+                            Chủ đề
+                        </th>
+                        <th style="text-align:center;width:100px">
+                            Nhà xuất bản
+                        </th>
+                        <th style="text-align:center"></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Truncate(item.TenGiay, 50)
+                            </td>
+                            <td>
+                                @Html.Raw(Truncate(item.MoTa, 70).ToString())
+                            </td>
+                            <td>
+                                <img src="~/Content/Images/Giay/@item.HinhMinhHoa" style="width:50px;" />
+                            </td>
+                            <td>
+                                @Html.FormatValue(@item.NgayCapNhat, "{0:dd/MM/yyyy}")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SoLuongBan)
+                            </td>
+                            <td>
+                                @Html.FormatValue(item.DonGia, "{0:#,##0}")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.chude.TenChuDe)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.MaGiay })" class="btn btn-warning" role="button">Sửa</a>
+                                <a href="@Url.Action("Details", new { id = item.MaGiay })" class="btn btn-primary" role="button">Chi tiết</a>
+                                <a href="@Url.Action("Delete", new { id = item.MaGiay })" class="btn btn-danger" role="button">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

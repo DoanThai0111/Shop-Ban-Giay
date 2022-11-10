@@ -1,0 +1,12 @@
+D:\ShopBanHang\ClassShop\bin\Debug\ClassShop.dll.config
+D:\ShopBanHang\ClassShop\bin\Debug\ClassShop.dll
+D:\ShopBanHang\ClassShop\bin\Debug\ClassShop.pdb
+D:\ShopBanHang\ClassShop\bin\Debug\EntityFramework.dll
+D:\ShopBanHang\ClassShop\bin\Debug\EntityFramework.SqlServer.dll
+D:\ShopBanHang\ClassShop\bin\Debug\EntityFramework.xml
+D:\ShopBanHang\ClassShop\bin\Debug\EntityFramework.SqlServer.xml
+D:\ShopBanHang\ClassShop\obj\Debug\ClassShop.csproj.AssemblyReference.cache
+D:\ShopBanHang\ClassShop\obj\Debug\ClassShop.csproj.CoreCompileInputs.cache
+D:\ShopBanHang\ClassShop\obj\Debug\ClassShop.csproj.CopyComplete
+D:\ShopBanHang\ClassShop\obj\Debug\ClassShop.dll
+D:\ShopBanHang\ClassShop\obj\Debug\ClassShop.pdb

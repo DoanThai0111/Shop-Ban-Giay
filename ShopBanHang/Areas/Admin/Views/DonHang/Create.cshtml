@@ -1,0 +1,136 @@
+﻿@model ShopBanHang.Models.dondathang
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý thông tin đơn hàng</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="https://localhost:44358/Admin">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">HOME</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Xin chào bạn đến với THÊM ĐƠN HÀNG </h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    Hãy kiểm tra thật kỹ trước khi chỉnh sửa !                   
+                </p>
+                @using (Html.BeginForm("Create", "DonHang", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Mã khách hàng:</label>
+                            <div class="col-md-10">
+                                <input type="number" min="1" name="sMaKH" value="@ViewBag.MaKH" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Ngày đặt hàng:</label>
+                            <div class="col-md-10">
+                                <input type="datetime" name="sNgayDH" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Trị giá:</label>
+                            <div class="col-md-10">
+                                <input type="number" min="1" required name="sTriGia" value="@ViewBag.TriGia" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Đã giao:</label>
+                            <div class="col-md-10">
+                                <select class="form-control" name="sDaGiao">
+                                    <option>Lựa chọn:</option>
+                                    <option>True</option>
+                                    <option>False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Ngày giao hàng:</label>
+                            <div class="col-md-10">
+                                <input type="datetime" name="sNgayGiaoHang" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Tên người nhận:</label>
+                            <div class="col-md-10">
+                                <input type="text" size="70" name="sTenNguoiNhan" value="@ViewBag.TenNguoiNhan" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Địa chỉ nhận:</label>
+                            <div class="col-md-10">
+                                <input type="text" size="70" name="sDiaChiNhan" value="@ViewBag.DiaChiNhan" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Điện thoại nhận:</label>
+                            <div class="col-md-10">
+                                <input type="text" size="70" name="sDienThoaiNhan" value="@ViewBag.DienThoaiNhan" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Đã thanh toán:</label>
+                            <div class="col-md-10">
+                                <select class="form-control" name="sHTThanhToan">
+                                    <option>Lựa chọn:</option>
+                                    <option>True</option>
+                                    <option>False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Đã giao hàng:</label>
+                            <div class="col-md-10">
+                                <select class="form-control" name="sHTGiaoHang">
+                                    <option>Lựa chọn:</option>
+                                    <option>True</option>
+                                    <option>False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Thêm mới" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div>
+                    @Html.ActionLink("VỀ TRANG QUẢN LÝ", "Index")
+                </div>
+
+            </div>
+        </div>   
+    </section>
+</div>
